@@ -1,0 +1,35 @@
+case 'brat': {
+const text = args.length >= 1 ? args.join(" ") : m.reply?.text || m.quoted?.caption || m.reply?.description || null;
+
+if (!text) return m.reply("masukan teksnya woii");
+
+async function brat(text) {
+ try {
+ return await new Promise((resolve, reject) => {
+ if(!text) return reject("missing text input");
+ axios.get("https://brat.caliphdev.com/api/brat", {
+ params: {
+ text
+ },
+ responseType: "arraybuffer"
+ }).then(res => {
+ const image = Buffer.from(res.data);
+ if(image.length <= 10240) return reject("failed generate brat");
+ return resolve({
+ success: true, 
+ image
+ })
+ })
+ })
+ } catch (e) {
+ return {
+ success: false,
+ errors: e
+ }
+ }
+}
+
+const buf = await brat(text);
+await Sky.sendAsSticker(m.chat, buf.image, m, { packname: "Instagram", author: "@farrastyle_" })
+}
+break
