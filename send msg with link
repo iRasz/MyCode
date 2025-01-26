@@ -1,0 +1,23 @@
+// Coba aja sendiri 
+const config = {
+  name: "pencet pesan ini!" // Nama bot yang ingin ditampilkan
+};
+
+const sendMessage = async (m) => {
+  await FardanDev.sendMessage(m.chat, {
+    text: config.name,
+    contextInfo: {
+      externalAdReply: {
+        title: "乂 Rass - Tiktok",
+        body: "Well Well Well",
+        mediaType: 1,
+        mediaUrl: "https://www.tiktok.com/@praslv",
+        sourceUrl: "https://www.tiktok.com/@praslv",
+        thumbnailUrl: "https://files.catbox.moe/r9e17w.jpg"
+      }
+    }
+  });
+};
+
+// Memanggil fungsi
+sendMessage(m);
