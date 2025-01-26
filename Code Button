@@ -1,0 +1,67 @@
+Sky.sendMessage(m.chat, {
+    text: 'haha',
+    buttons: [
+        {
+            buttonId: `${prefix}about`,
+            buttonText: {
+                displayText: "About 👤"
+            }
+        },
+        {
+            buttonId: `${prefix}contact`,
+            buttonText: {
+                displayText: "Contact 📞"
+            }
+        },
+        {
+            buttonId: `${prefix}help`,
+            buttonText: {
+                displayText: "Help ❓"
+            }
+        },
+        {
+            buttonId: `${prefix}menu`,
+            buttonText: {
+                displayText: "Menu 📋"
+            }
+        },
+        {
+            buttonId: `${prefix}settings`,
+            buttonText: {
+                displayText: "Settings ⚙️"
+            }
+        },
+        {
+            buttonId: `${prefix}info`,
+            buttonText: {
+                displayText: "Info ℹ️"
+            }
+        },
+        {
+            buttonId: `${prefix}donate`,
+            buttonText: {
+                displayText: "Donate 💰"
+            }
+        },
+        {
+            buttonId: `${prefix}feedback`,
+            buttonText: {
+                displayText: "Feedback 📝"
+            }
+        },
+        {
+            buttonId: `${prefix}support`,
+            buttonText: {
+                displayText: "Support 🛠️"
+            }
+        },
+        {
+            buttonId: `${prefix}exit`,
+            buttonText: {
+                displayText: "Exit ❌"
+            }
+        }
+    ],
+    viewOnce: true,
+    headerType: 6
+}, { quoted: m });
