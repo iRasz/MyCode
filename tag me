@@ -1,0 +1,5 @@
+// fitur ga guna wikwok
+			case 'tagme': {
+				Sky.sendMessage(m.chat, { text: `@${m.sender.split('@')[0]}`, mentions: [m.sender] }, { quoted: m })
+			}
+			break
