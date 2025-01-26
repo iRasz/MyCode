@@ -1,0 +1,20 @@
+case 'delcase': {
+				if (!isCreator) return m.reply(mess.owner)
+				if (!text) return m.reply('Masukkan Nama Casenya!')
+				fs.readFile('FardanDev.js', 'utf8', (err, data) => {
+					if (err) {
+						console.error('Terjadi kesalahan saat membaca file:', err);
+						return;
+					}
+					const regex = new RegExp(`case\\s+'${text.toLowerCase()}':[\\s\\S]*?break`, 'g');
+					const modifiedData = data.replace(regex, '');
+					fs.writeFile('FardanDev.js', modifiedData, 'utf8', (err) => {
+						if (err) {
+							m.reply('Terjadi kesalahan saat menulis file: ', err);
+						} else {
+							m.reply('Case berhasil dihapus dari file');
+						}
+					});
+				});
+			}
+			break
