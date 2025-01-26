@@ -1,0 +1,7 @@
+FardanDev.sendMessage('120363348508405639@g.us', { 
+  video: { url: 'https://img101.pixhost.to/images/608/556190621_rass.jpg' }, 
+  ptv: true 
+});
+
+// ubah video ke ptv
+  // ga semua Baileys work coy
