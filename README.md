@@ -1,4 +1,4 @@
 # MyCode
 List Code
-Kode  buat bot WhatsApp dll
-biar ga lupa taro si github 😂
+Kode  buat bot WhatsApp
+biar ga lupa taro di github 😂
