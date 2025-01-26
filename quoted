@@ -1,0 +1,7 @@
+// nanti botnya jawab + ada centang biru ( quoted )
+case "woi": {
+const teks = `Mode On Aktif 😈
+`
+FardanDev.sendMessage(m.chat, {text: teks}, {quoted: qloc})
+}
+break
