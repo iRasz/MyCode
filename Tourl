@@ -1,0 +1,47 @@
+// qloc ubah sesuai fakequoted klean
+'tourl': {
+const FormData = require("form-data");
+const { fromBuffer } = require("file-type");
+const fakeUserAgent = require("fake-useragent");
+const { filesize } = require('filesize');
+	let q = m.quoted ? m.quoted : m
+	let mime = (q.msg || q).mimetype || ''
+	const createFormData = (content, fieldName, ext) => {
+ const { mime } = fromBuffer(content) || {};
+ const formData = new FormData();
+ formData.append(fieldName, content, `${new Date()}.${ext}`);
+ return formData;
+};
+
+const catbox = async (content) => {
+ try {
+ const { ext, mime } = (await fromBuffer(content)) || {};
+ const formData = createFormData(content, "fileToUpload", ext);
+ formData.append("reqtype", "fileupload");
+ const response = await fetch("https://catbox.moe/user/api.php", {
+ method: "POST",
+ body: formData,
+ headers: {
+ "User-Agent": fakeUserAgent(),
+ },
+ });
+ return await response.text();
+ } catch (error) {
+ throw false;
+ }
+ }
+	if (!mime) return m.reply('reply media!')
+	m.reply("Mohon Tunggu Sebentar...")
+	let media = await q.download()
+	let link = await catbox(media)
+	let size = await fetch(link)
+	size = await size.text()
+	size = await filesize(size.length)
+	let caption = `*SUCCES UPLOAD A FILE*
+
+🔗 *L I N K :* ${link} !
+📊 *S I Z E :* ${size} Byte
+`
+await FardanDev.sendMessage(m.chat,{image: {url: link}, caption: caption }, { quoted: qloc })
+}
+break
