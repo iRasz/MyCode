@@ -1,0 +1,31 @@
+case 'addcase': {
+    if (!isCreator) return (mess.only.owner)
+    if (!text) return m.reply('Mana case nya');
+    const fs = require('fs');
+const namaFile = 'Case.js';
+const caseBaru = `${text}`;
+
+fs.readFile(namaFile, 'utf8', (err, data) => {
+    if (err) {
+        console.error('Terjadi kesalahan saat membaca file:', err);
+        return;
+    }
+
+    const posisiAwalGimage = data.indexOf("case 'addcase':");
+
+    if (posisiAwalGimage !== -1) {
+        const kodeBaruLengkap = data.slice(0, posisiAwalGimage) + '\n' + caseBaru + '\n' + data.slice(posisiAwalGimage);
+
+        fs.writeFile(namaFile, kodeBaruLengkap, 'utf8', (err) => {
+            if (err) {
+                m.reply('Terjadi kesalahan saat menulis file:', err);
+            } else {
+                m.reply('Case baru berhasil ditambahkan di atas case gimage.');
+            }
+        });
+    } else {
+        m.reply('Tidak dapat menemukan case gimage dalam file.');
+    }
+});
+
+}
