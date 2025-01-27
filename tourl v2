@@ -1,0 +1,53 @@
+case 'tourl': {
+
+				if (!isPremium && db.data.users[m.sender].limit < 1) return newReply(mess.limit);
+
+				if (!mime) return newReply(`Kirim/Reply Video/Gambar Dengan Caption ${prefix + command}`);
+
+				await reactionMessage('⏱️');
+
+				try {
+
+					let media = await haruka.downloadAndSaveMediaMessage(quoted);
+
+					if (/image|video/.test(mime)) {
+
+						let response = await CatBox(media);
+
+						let fileSize = (fs.statSync(media).size / 1024).toFixed(2);
+
+						let uploadDate = new Date().toLocaleString();
+
+						let uploader = m.pushName;
+
+						let caption = `🔗 *Link Media* : ${response}\n📅 *Tanggal Upload* : ${uploadDate}\n📂 *Ukuran File* : ${fileSize} KB\n👤 *Pengunggah* : ${uploader}`.trim();
+
+						newReply(caption);
+
+					} else if (!/image/.test(mime)) {
+
+						let response = await CatBox(media);
+
+						newReply(response);
+
+					} else {
+
+						newReply(`Jenis media tidak didukung!`);
+
+					}
+
+					await fs.unlinkSync(media);
+
+				} catch (err) {
+
+					console.log(err);
+
+					newReply("Ups, terjadi kesalahan saat mengunggah media. Coba lagi ya! 😅");
+
+				}
+
+			}
+
+			db.data.users[m.sender].limit -= 1;
+
+			break
