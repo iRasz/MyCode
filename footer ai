@@ -1,0 +1,19 @@
+// nanti jawaban botnya ada footer ai
+// cuma bisa di private chat ygy
+case "sticker": {
+  if (!/image|video/gi.test(mime)) return m.reply("Kirim media berupa gambar/video untuk membuat sticker");
+  if (/video/gi.test(mime) && qmsg.seconds > 15) return m.reply("Durasi video maksimal 15 detik!");
+  
+  var image = await Sky.downloadAndSaveMediaMessage(qmsg);
+  await Sky.sendAsSticker(m.chat, image, m, {
+    packname: 'instagram',
+    author: '@farrastyle_',
+    ai: true  // Menambahkan ai: true untuk logo AI
+  });
+  await fs.unlinkSync(image);
+}
+break;
+
+case 'help': {
+  m.reply("Ketik .menu untuk melihat fitur bot", { ai: true });  // Menambahkan ai: true untuk logo AI
+}
