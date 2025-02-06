@@ -1,5 +1,5 @@
 // qloc ubah sesuai fakequoted klean
-'tourl': {
+case 'tourl': {
 const FormData = require("form-data");
 const { fromBuffer } = require("file-type");
 const fakeUserAgent = require("fake-useragent");
