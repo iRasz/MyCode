@@ -1,0 +1,15 @@
+conn.sendMessage(m.chat, { 
+    video: fs.readFileSync('./rassvintage.mp4'),
+    gifPlayback: true,
+    caption: teks,
+    contextInfo: {
+        externalAdReply: {
+            title: 'Paras',
+            body: 'Foreal',
+            thumbnailUrl: 'https://files.catbox.moe/jds9qd.jpg',
+            sourceUrl: `linkSaluran`,
+            mediaType: 1,
+            renderLargerThumbnail: true
+        }
+    }
+});
